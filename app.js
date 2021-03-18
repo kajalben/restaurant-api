@@ -7,6 +7,7 @@ const cors = require('cors');
 const db = require('./database/client');
 
 const restaurantRouter = require('./routes/restaurantRouter');
+const cityRouter = require('./routes/cityRouter');
 
 const app = express();
  
@@ -19,5 +20,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/restaurant', restaurantRouter);
+app.use('/city', cityRouter);
 
 module.exports = app;
