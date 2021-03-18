@@ -23,8 +23,6 @@ const getOneRestarant = async(req, res, next) =>{
     }
 }
 
-
-
 const createRestaurent = async(req,res,next) =>{
     const { name, image, description, city  } = req.body
     try{

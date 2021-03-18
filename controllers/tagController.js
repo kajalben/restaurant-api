@@ -24,7 +24,7 @@ try{
 const createTag = async(req, res, next) =>{
     const { name } = req.body;
     try {
-        const newTag =await Tag.create({ name})
+        const newTag =await Tag.create({name})
         res.send(newTag);
     } catch (e) {
         res.status(500).send(e.message)
