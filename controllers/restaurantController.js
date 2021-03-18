@@ -14,7 +14,7 @@ const getRestarants = async(req, res, next) =>{
 const getOneRestarant = async(req, res, next) =>{
     const { id } = req.params;
      try{
-        const targetRestaurant = await Restaurant.findById({_id : id});
+        const targetRestaurant = await Restaurant.findById({_id : id}).populate('city');
         if (!targetRestaurant) return res.status(404).send('No such Restaturent')
         res.json(targetRestaurant);
      }
