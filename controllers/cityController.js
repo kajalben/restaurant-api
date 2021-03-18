@@ -10,6 +10,17 @@ const getCities = async(req, res, next) =>{
     
 }
 
+const getOneCity = async (req,res, next) => {
+  const { id } = req.params;
+  try{
+    const targetCity = await City.findById({ _id: id});
+    if (!targetCity) return res.status(404).send('No such City')
+    res.json(targetCity);
+  } catch(e) {
+    res.status(500).send(e.message);
+  }
+}
+
 const createCity = async(req, res, next) =>{
     const { name } = req.body;
     try {
@@ -25,5 +36,6 @@ const createCity = async(req, res, next) =>{
 
 module.exports = {
     getCities,
-    createCity
+    createCity,
+    getOneCity
 }

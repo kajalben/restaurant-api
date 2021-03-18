@@ -5,20 +5,20 @@ const getRestarants = async(req, res, next) =>{
         const getRestarant = await Restaurant.find({}).populate('city');
         res.json(getRestarant);
         res.status(500).send(e.message);
-      }
-      catch(e){
+    }
+    catch(e){
         res.status(500).send(e.message);
     }
 }
 
 const getOneRestarant = async(req, res, next) =>{
     const { id } = req.params;
-     try{
+    try{
         const targetRestaurant = await Restaurant.findById({_id : id}).populate('city');
         if (!targetRestaurant) return res.status(404).send('No such Restaturent')
         res.json(targetRestaurant);
-     }
-     catch(e){
+    }
+    catch(e){
         res.status(500).send(e.message);
     }
 }
