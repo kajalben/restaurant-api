@@ -5,7 +5,7 @@ const {getCities, createCity, getOneCity, getRestaurantsByCity} = require('../co
 
 router.get('/', getCities);
 router.get('/:id', getOneCity);
-router.get('/restaurants/:id', getRestaurantsByCity);
+router.get('/restaurants/:name', getRestaurantsByCity);
 router.post('/', createCity);
 
 
