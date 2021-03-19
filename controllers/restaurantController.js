@@ -23,9 +23,9 @@ const getOneRestarant = async(req, res, next) =>{
 }
 
 const createRestaurent = async(req,res,next) =>{
-    const { name, image, description, city  } = req.body
+    const { name, image, description, city, tags, location  } = req.body
     try{
-        const createRestaurent = await Restaurant.create({name, image, description, city})
+        const createRestaurent = await Restaurant.create({name, image, description, city, tags, location  })
         res.json(createRestaurent)
     }
     catch(e){
