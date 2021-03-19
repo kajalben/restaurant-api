@@ -7,7 +7,6 @@ const getTags = async(req, res, next) =>{
     } catch (e) {
         res.status(500).send(e.message);
     }
-    
 }
 
 const getOneTag = async (req,res, next) => {
