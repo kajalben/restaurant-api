@@ -29,13 +29,24 @@ const createTag = async(req, res, next) =>{
     } catch (e) {
         res.status(500).send(e.message)
     }
-    
 }
+
+const getRestaurantsByTag = async (req, res, next) => {
+    const { name } = req.params;
+    try {
+      const targetCity = await Tag.find({ name: { $regex: '.*' + name + '.*', $options: 'i' }  }).populate("restaurants");
+      if (!targetCity) return res.status(404).send("No such restaurants");
+      res.json(targetCity);
+    } catch (e) {
+      res.status(500).send(e.message);
+    }
+  };
 
 
 
 module.exports = {
     getTags,
     getOneTag,
-    createTag
+    createTag,
+    getRestaurantsByTag
 }

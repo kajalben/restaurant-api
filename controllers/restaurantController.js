@@ -4,7 +4,6 @@ const getRestarants = async(req, res, next) =>{
     try {
         const getRestarant = await Restaurant.find({}).populate('city');
         res.json(getRestarant);
-        res.status(500).send(e.message);
     }
     catch(e){
         res.status(500).send(e.message);
