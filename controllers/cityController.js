@@ -47,10 +47,23 @@ const createCity = async (req, res, next) => {
     res.status(500).send(e.message);
   }
 };
+const addRestaurantInCity = async(req, res, next) =>{
+      const {obj_id} = req.body;
+      const { id} = req.params;
+      try{
+        const getCity = await City.findByIdAndUpdate(id, { $push :{ restaurants : obj_id}})
+        res.json(getCity);
+      }
+      catch(e) {
+        res.status(500).send(e.message);
+      }
+
+}
 
 module.exports = {
   getCities,
   createCity,
   getOneCity,
   getRestaurantsByCity,
+  addRestaurantInCity
 };
