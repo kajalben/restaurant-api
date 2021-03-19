@@ -31,7 +31,7 @@ const getRestaurantsByCity = async (req, res, next) => {
   const sanitizeName = camelize(name)
   try {
     const targetCity = await City.find({ name: sanitizeName }).populate("restaurants");
-    if (!targetCity) return res.status(404).send("No such City");
+    if (!targetCity) return res.status(404).send("No such restaurants");
     res.json(targetCity);
   } catch (e) {
     res.status(500).send(e.message);
